@@ -7,18 +7,22 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialCollections
+
 import MaterialComponents.MaterialAppBar
+import MaterialComponents.MaterialButtons
+import MaterialComponents.MaterialCollections
 
 class ViewController: MDCCollectionViewController {
     
     let appBar = MDCAppBar()
+    let fab = MDCFloatingButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         styler.cellStyle = .card
         
         initAppBar()
+        initFab()
     }
     
     func initAppBar() {
@@ -44,6 +48,20 @@ class ViewController: MDCCollectionViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(ViewController.barButtonDidTap(_:)))
+        fab.setTitle("+", for: .normal)
+        fab.setTitle("-", for: .selected)
+        fab.addTarget(self, action: #selector(ViewController.fabDidTap(_:)), for: .touchUpInside)
+    }
+    
+    func initFab() {
+        view.addSubview(fab)
+        fab.translatesAutoresizingMaskIntoConstraints = false
+        fab.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
+        fab.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16.0).isActive = true
+    }
+    
+    func fabDidTap(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
     
 }
