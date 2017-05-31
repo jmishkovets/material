@@ -8,16 +8,34 @@
 
 import UIKit
 import MaterialComponents.MaterialCollections
+import MaterialComponents.MaterialAppBar
 
 class ViewController: MDCCollectionViewController {
+    
+    let appBar = MDCAppBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         styler.cellStyle = .card
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        initAppBar()
+    }
+    
+    func initAppBar() {
+        addChildViewController(appBar.headerViewController)
+        appBar.headerViewController.headerView.backgroundColor = UIColor(red: 1.0, green: 0.76, blue: 0.03, alpha: 1.0)
+        appBar.headerViewController.headerView.trackingScrollView = self.collectionView
+        appBar.navigationBar.tintColor = UIColor.black
+        appBar.addSubviewsToParent()
+        
+        title = "Material Components"
     }
 
-    // MARK: UICollectionViewDataSource
+}
+
+// MARK: UICollectionViewDataSource
+
+extension ViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 5
