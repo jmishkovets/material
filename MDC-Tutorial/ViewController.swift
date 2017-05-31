@@ -29,6 +29,21 @@ class ViewController: MDCCollectionViewController {
         appBar.addSubviewsToParent()
         
         title = "Material Components"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(ViewController.barButtonDidTap(_:)))
+    }
+    
+    func barButtonDidTap(_ sender: UIBarButtonItem) {
+        editor.isEditing = !editor.isEditing
+        
+        let buttonTitle =  editor.isEditing ? "Cancel" : "Edit"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: buttonTitle,
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(ViewController.barButtonDidTap(_:)))
     }
     
 }
