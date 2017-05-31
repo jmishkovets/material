@@ -12,9 +12,13 @@
 		A32F539B1EDEF62100D01896 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32F53991EDEF62100D01896 /* Main.storyboard */; };
 		A32F539D1EDEF62100D01896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32F539C1EDEF62100D01896 /* Assets.xcassets */; };
 		A32F53A01EDEF62100D01896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32F539E1EDEF62100D01896 /* LaunchScreen.storyboard */; };
+		A95B983FFA6DA78890ED9239 /* Pods_MDC_Playground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999D2B876D6B14E13D07848D /* Pods_MDC_Playground.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D513D462E33843362B971CF /* Pods-MDC-Playground.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDC-Playground.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDC-Playground/Pods-MDC-Playground.release.xcconfig"; sourceTree = "<group>"; };
+		8B5545FC837F9F5B450D7CA8 /* Pods-MDC-Playground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDC-Playground.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MDC-Playground/Pods-MDC-Playground.debug.xcconfig"; sourceTree = "<group>"; };
+		999D2B876D6B14E13D07848D /* Pods_MDC_Playground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDC_Playground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32F53921EDEF62100D01896 /* MDC-Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MDC-Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32F53951EDEF62100D01896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A32F53971EDEF62100D01896 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95B983FFA6DA78890ED9239 /* Pods_MDC_Playground.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E68D81398F899090C567F6D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B5545FC837F9F5B450D7CA8 /* Pods-MDC-Playground.debug.xcconfig */,
+				1D513D462E33843362B971CF /* Pods-MDC-Playground.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A32F53891EDEF62100D01896 = {
 			isa = PBXGroup;
 			children = (
 				A32F53941EDEF62100D01896 /* MDC-Playground */,
 				A32F53931EDEF62100D01896 /* Products */,
+				0E68D81398F899090C567F6D /* Pods */,
+				DD7143A59B0FDB53B36A7145 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,14 @@
 			path = "MDC-Playground";
 			sourceTree = "<group>";
 		};
+		DD7143A59B0FDB53B36A7145 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				999D2B876D6B14E13D07848D /* Pods_MDC_Playground.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A32F53A41EDEF62100D01896 /* Build configuration list for PBXNativeTarget "MDC-Playground" */;
 			buildPhases = (
+				A78508EF07332F1146AADC0A /* [CP] Check Pods Manifest.lock */,
 				A32F538E1EDEF62100D01896 /* Sources */,
 				A32F538F1EDEF62100D01896 /* Frameworks */,
 				A32F53901EDEF62100D01896 /* Resources */,
+				A00ACA110FCDC1D3FB40EDCE /* [CP] Embed Pods Frameworks */,
+				E70AA032AF18EF6DAB241086 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A00ACA110FCDC1D3FB40EDCE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MDC-Playground/Pods-MDC-Playground-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A78508EF07332F1146AADC0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E70AA032AF18EF6DAB241086 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MDC-Playground/Pods-MDC-Playground-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A32F538E1EDEF62100D01896 /* Sources */ = {
@@ -258,6 +333,7 @@
 		};
 		A32F53A51EDEF62100D01896 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B5545FC837F9F5B450D7CA8 /* Pods-MDC-Playground.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "MDC-Playground/Info.plist";
@@ -270,6 +346,7 @@
 		};
 		A32F53A61EDEF62100D01896 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D513D462E33843362B971CF /* Pods-MDC-Playground.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "MDC-Playground/Info.plist";
