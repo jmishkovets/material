@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A32F53731EDEB5A500D01896"
+               BlueprintIdentifier = "A3C454601EDF640E00FE9487"
                BuildableName = "MDC-Tutorial.app"
                BlueprintName = "MDC-Tutorial"
                ReferencedContainer = "container:MDC-Tutorial.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A32F53731EDEB5A500D01896"
+            BlueprintIdentifier = "A3C454601EDF640E00FE9487"
             BuildableName = "MDC-Tutorial.app"
             BlueprintName = "MDC-Tutorial"
             ReferencedContainer = "container:MDC-Tutorial.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A32F53731EDEB5A500D01896"
+            BlueprintIdentifier = "A3C454601EDF640E00FE9487"
             BuildableName = "MDC-Tutorial.app"
             BlueprintName = "MDC-Tutorial"
             ReferencedContainer = "container:MDC-Tutorial.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A32F53731EDEB5A500D01896"
+            BlueprintIdentifier = "A3C454601EDF640E00FE9487"
             BuildableName = "MDC-Tutorial.app"
             BlueprintName = "MDC-Tutorial"
             ReferencedContainer = "container:MDC-Tutorial.xcodeproj">
