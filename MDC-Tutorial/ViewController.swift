@@ -30,7 +30,7 @@ class ViewController: MDCCollectionViewController {
         
         title = "Material Components"
     }
-
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -59,3 +59,20 @@ extension ViewController {
 
 }
 
+// MARK: UIScrollViewDelegate
+
+extension ViewController {
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == appBar.headerViewController.headerView.trackingScrollView {
+            appBar.headerViewController.headerView.trackingScrollDidScroll()
+        }
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == appBar.headerViewController.headerView.trackingScrollView {
+            appBar.headerViewController.headerView.trackingScrollDidEndDecelerating()
+        }
+    }
+
+}
