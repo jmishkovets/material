@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         initAppBar()
+        initMap()
     }
     
     func initAppBar() {
@@ -57,6 +58,25 @@ class ViewController: UIViewController {
         appBar.addSubviewsToParent()
     }
     
+    func initMap() {
+        // Honolulu
+        let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+        centerMapOnLocation(location: initialLocation)
+        
+        // Drop a pin
+        let dropPin = MKPointAnnotation()
+        dropPin.coordinate = initialLocation.coordinate
+        dropPin.title = "Honolulu"
+        mapView.addAnnotation(dropPin)
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     func didTapSettings() {
         let settingsViewController = SettingsViewController()
         settingsViewController.title = "Settings"
@@ -76,12 +96,6 @@ class ViewController: UIViewController {
     func closeViewController() {
         dismiss(animated: true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
