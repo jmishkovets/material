@@ -26,25 +26,29 @@ class ViewController: UIViewController {
         appBar.headerViewController.headerView.backgroundColor = appleBlue
         //appBar.headerViewController.headerView.trackingScrollView = self.view
         appBar.navigationBar.tintColor = UIColor.white
+        appBar.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         appBar.addSubviewsToParent()
         
         title = "MD forever!"
         
-        let buttonFrame = CGRect(x: 0, y: 0, width: 30, height: 30)
-    
-        let searchButton: UIButton = UIButton(type: UIButtonType.custom)
-        searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
-        searchButton.addTarget(self, action: #selector(didTapSearch), for: UIControlEvents.touchUpInside)
-        searchButton.frame = buttonFrame
-        let searchBarButton = UIBarButtonItem(customView: searchButton)
+//        let buttonFrame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//    
+//        let searchButton: UIButton = UIButton(type: UIButtonType.custom)
+//        searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
+//        searchButton.addTarget(self, action: #selector(didTapSearch), for: UIControlEvents.touchUpInside)
+//        searchButton.frame = buttonFrame
+//        let searchBarButton = UIBarButtonItem(customView: searchButton)
+//        
+//        let settingsButton: UIButton = UIButton(type: UIButtonType.custom)
+//        settingsButton.setImage(UIImage(named: "Settings"), for: UIControlState.normal)
+//        settingsButton.addTarget(self, action: #selector(didTapSettings), for: UIControlEvents.touchUpInside)
+//        settingsButton.frame = buttonFrame
+//        let settingsBarButton = UIBarButtonItem(customView: settingsButton)
+//        
+//        self.navigationItem.rightBarButtonItems = [settingsBarButton, searchBarButton]
         
-        let settingsButton: UIButton = UIButton(type: UIButtonType.custom)
-        settingsButton.setImage(UIImage(named: "Settings"), for: UIControlState.normal)
-        settingsButton.addTarget(self, action: #selector(didTapSettings), for: UIControlEvents.touchUpInside)
-        settingsButton.frame = buttonFrame
-        let settingsBarButton = UIBarButtonItem(customView: settingsButton)
-        
-        self.navigationItem.rightBarButtonItems = [settingsBarButton, searchBarButton]
+        let settingsBarButton = UIBarButtonItem(image: UIImage(named: "Settings"), style: .done, target: self, action: #selector(didTapSettings))
+        self.navigationItem.rightBarButtonItem = settingsBarButton
         
         // After all other views have been registered.
         appBar.addSubviewsToParent()
@@ -63,9 +67,8 @@ class ViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
     
-    func didTapSearch() {
-        
-    }
+//    func didTapSearch() {
+//    }
     
     func closeViewController() {
         dismiss(animated: true)

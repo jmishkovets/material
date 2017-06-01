@@ -15,6 +15,7 @@ target 'MDC-Playground' do
   pod 'MaterialComponents/FlexibleHeader'
   pod 'MaterialComponents/ShadowElevations'
   pod 'MaterialComponents/ShadowLayer'
+  pod 'MaterialComponents/Snackbar’
   pod 'MaterialComponents/ProgressView'
   pod 'MaterialComponents/Typography'
 end

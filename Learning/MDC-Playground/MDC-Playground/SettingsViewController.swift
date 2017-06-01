@@ -9,6 +9,7 @@
 import UIKit
 
 import MaterialComponents.MaterialCollections
+import MaterialComponents.MaterialSnackbar
 
 class SettingsViewController: MDCCollectionViewController {
     
@@ -39,6 +40,16 @@ class SettingsViewController: MDCCollectionViewController {
     
     func didTapBack() {
         dismiss(animated: true)
+    }
+    
+    @objc fileprivate func didTapSwitch() {
+        let message = MDCSnackbarMessage(text: "Are you sure?")
+        let action = MDCSnackbarMessageAction()
+        action.title = "Yes";
+        message!.action = action;
+        message!.buttonTextColor = UIColor.white
+        
+        MDCSnackbarManager.show(message)
     }
     
     func initAppBar() {
@@ -76,6 +87,7 @@ extension SettingsViewController {
         if let cell = cell as? MDCCollectionViewTextCell {
             cell.textLabel?.text = content[indexPath.section]?[indexPath.item]
             let editingSwitch = UISwitch(frame: CGRect.zero)
+            editingSwitch.addTarget(self, action: #selector(self.didTapSwitch), for: .valueChanged)
             cell.accessoryView = editingSwitch;
         }
         
