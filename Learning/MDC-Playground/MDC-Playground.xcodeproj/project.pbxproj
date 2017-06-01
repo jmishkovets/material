@@ -13,6 +13,7 @@
 		A38A64AE1EDFF7B600CDF8FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38A64AC1EDFF7B600CDF8FE /* Main.storyboard */; };
 		A38A64B01EDFF7B600CDF8FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A38A64AF1EDFF7B600CDF8FE /* Assets.xcassets */; };
 		A38A64B31EDFF7B600CDF8FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38A64B11EDFF7B600CDF8FE /* LaunchScreen.storyboard */; };
+		A38A64BD1EE041A400CDF8FE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A64BC1EE041A400CDF8FE /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A38A64AF1EDFF7B600CDF8FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A38A64B21EDFF7B600CDF8FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A38A64B41EDFF7B600CDF8FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A38A64BC1EE041A400CDF8FE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				A38A64A81EDFF7B600CDF8FE /* AppDelegate.swift */,
 				A38A64AA1EDFF7B600CDF8FE /* ViewController.swift */,
+				A38A64BC1EE041A400CDF8FE /* SettingsViewController.swift */,
 				A38A64AC1EDFF7B600CDF8FE /* Main.storyboard */,
 				A38A64AF1EDFF7B600CDF8FE /* Assets.xcassets */,
 				A38A64B11EDFF7B600CDF8FE /* LaunchScreen.storyboard */,
@@ -213,6 +216,7 @@
 			files = (
 				A38A64AB1EDFF7B600CDF8FE /* ViewController.swift in Sources */,
 				A38A64A91EDFF7B600CDF8FE /* AppDelegate.swift in Sources */,
+				A38A64BD1EE041A400CDF8FE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +382,7 @@
 				A38A64B91EDFF7B600CDF8FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
