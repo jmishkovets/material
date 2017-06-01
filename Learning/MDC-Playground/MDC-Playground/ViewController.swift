@@ -8,8 +8,11 @@
 
 import UIKit
 import MaterialComponents.MaterialAppBar
+import MapKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     let appBar = MDCAppBar()
     let appleBlue = UIColor(red: 12/255, green: 122/255, blue: 254/255, alpha: 0.7)
