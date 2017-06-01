@@ -21,16 +21,13 @@ class ViewController: UIViewController {
     
     func initAppBar() {
         addChildViewController(appBar.headerViewController)
-        appBar.headerViewController.headerView.backgroundColor = UIColor(red: 1.0, green: 0.76, blue: 0.03, alpha: 1.0)
+        
+        appBar.headerViewController.headerView.backgroundColor = UIColor(red: 12/255, green: 122/255, blue: 254/255, alpha: 0.7)
         //appBar.headerViewController.headerView.trackingScrollView = self.view
         appBar.navigationBar.tintColor = UIColor.black
         appBar.addSubviewsToParent()
         
-        title = "Material Components"
-        
-        
-//        let searchBarButton = UIBarButtonItem(image: UIImage(named: "Search"), style: .done, target: self, action: #selector(searchButtonPressed))
-        
+        title = "Material forever!"
         
         let buttonFrame = CGRect(x: 0, y: 0, width: 30, height: 30)
     
@@ -46,10 +43,6 @@ class ViewController: UIViewController {
         settingsButton.frame = buttonFrame
         let settingsBarButton = UIBarButtonItem(customView: settingsButton)
         
-//        let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-//        negativeSpacer.width = -25;
-//        
-//        let settingsBarButton = UIBarButtonItem(image: UIImage(named: "Settings"), style: .done, target: self, action: #selector(settingsButtonPressed))
         self.navigationItem.rightBarButtonItems = [settingsBarButton, searchBarButton]
         
         // After all other views have been registered.
