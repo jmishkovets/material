@@ -15,8 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     let appBar = MDCAppBar()
-    let appleBlue = UIColor(red: 12/255, green: 122/255, blue: 254/255, alpha: 0.7)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +26,7 @@ class ViewController: UIViewController {
     func initAppBar() {
         addChildViewController(appBar.headerViewController)
         
-        appBar.headerViewController.headerView.backgroundColor = appleBlue
+        appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
         //appBar.headerViewController.headerView.trackingScrollView = self.view
         appBar.navigationBar.tintColor = UIColor.white
         appBar.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -70,6 +69,11 @@ class ViewController: UIViewController {
         mapView.addAnnotation(dropPin)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addBottomSheet()
+    }
+    
     func centerMapOnLocation(location: CLLocation) {
         let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
@@ -82,7 +86,7 @@ class ViewController: UIViewController {
         settingsViewController.title = "Settings"
         
         let navigationController = UINavigationController(rootViewController: settingsViewController)
-        navigationController.navigationBar.barTintColor = appleBlue
+        navigationController.navigationBar.barTintColor = AppDelegate.appleBlue
         navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController.navigationBar.isTranslucent = false
         navigationController.isNavigationBarHidden = true
@@ -90,11 +94,17 @@ class ViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
     
-//    func didTapSearch() {
-//    }
-    
     func closeViewController() {
         dismiss(animated: true)
+    }
+    
+    func addBottomSheet() {
+        let bottomSheetViewController = BottomSheetViewController()
+        
+        self.addChildViewController(bottomSheetViewController)
+        self.view.addSubview(bottomSheetViewController.view)
+        bottomSheetViewController.didMove(toParentViewController: self)
+        bottomSheetViewController.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
     }
 
 }
