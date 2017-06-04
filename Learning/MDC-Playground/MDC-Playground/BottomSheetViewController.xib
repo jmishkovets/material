@@ -35,6 +35,10 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Honolulu" translatesAutoresizingMaskIntoConstraints="NO" id="8Pp-D0-1gr">
+                    <rect key="frame" x="16" y="71" width="343" height="198"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -44,4 +48,7 @@
             <point key="canvasLocation" x="-28.5" y="127.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Honolulu" width="300" height="200"/>
+    </resources>
 </document>

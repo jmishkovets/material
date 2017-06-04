@@ -12,7 +12,8 @@ class BottomSheetViewController: UIViewController {
 
     @IBOutlet weak var gripView: UIView!
     
-    let alpha: CGFloat = 0.5
+    let alpha: CGFloat = 0.7
+    let minHeight: CGFloat = 56
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,12 @@ class BottomSheetViewController: UIViewController {
     func didPanGesture(panGestureRecognizer: UIPanGestureRecognizer) {
         let translation = panGestureRecognizer.translation(in: self.view)
         let minY = self.view.frame.minY
-        self.view.frame = CGRect(x: 0, y: minY + translation.y, width: view.frame.width, height: view.frame.height)
+        var newY = minY + translation.y
+        let limitY = UIScreen.main.bounds.height - minHeight
+        if newY > limitY {
+            newY = limitY
+        }
+        self.view.frame = CGRect(x: 0, y: newY, width: view.frame.width, height: view.frame.height)
         panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
     }
     
@@ -42,7 +48,7 @@ class BottomSheetViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupBackgorund()
+        setupBackgorund() // todo: causes multiple view creation if settings are choosen
     }
     
     func setupBackgorund() {
@@ -64,7 +70,7 @@ class BottomSheetViewController: UIViewController {
         
         UIView.animate(withDuration: 0.2) { [weak self] in
             let frame = self?.view.frame
-            let indent = UIScreen.main.bounds.height * 0.9
+            let indent = UIScreen.main.bounds.height - (self?.minHeight)!
             self?.view.frame = CGRect(x: 0, y: indent, width: frame!.width, height: frame!.height)
         }
     }
