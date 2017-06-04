@@ -21,6 +21,10 @@ class BottomSheetViewController: UIViewController {
         let panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(didPanGesture))
         view.addGestureRecognizer(panGesture)
         
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(didTapGesture))
+        tapGesture.numberOfTapsRequired = 1
+        view.addGestureRecognizer(tapGesture)
+        
         gripView.alpha = alpha
         
         roundViewCorners()
@@ -36,6 +40,13 @@ class BottomSheetViewController: UIViewController {
         }
         self.view.frame = CGRect(x: 0, y: newY, width: view.frame.width, height: view.frame.height)
         panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
+    }
+    
+    func didTapGesture(tapGestureRecognizer: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            let frame = self?.view.frame
+            self?.view.frame = CGRect(x: 0, y: UIApplication.shared.statusBarFrame.size.height, width: frame!.width, height: frame!.height)
+        }
     }
     
     func roundViewCorners() {

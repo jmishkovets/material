@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialAppBar
 import MapKit
+
+import MaterialComponents.MaterialAppBar
+import MaterialComponents.MaterialButtons
 
 class ViewController: UIViewController {
     
@@ -16,12 +18,15 @@ class ViewController: UIViewController {
     
     let appBar = MDCAppBar()
     
+    let fab = MDCFloatingButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initAppBar()
         initMap()
         addBottomSheet()
+        initFab()
     }
     
     func initAppBar() {
@@ -70,6 +75,23 @@ class ViewController: UIViewController {
         mapView.addAnnotation(dropPin)
     }
     
+    func addBottomSheet() {
+        let bottomSheetViewController = BottomSheetViewController()
+        
+        self.addChildViewController(bottomSheetViewController)
+        self.view.addSubview(bottomSheetViewController.view)
+        bottomSheetViewController.didMove(toParentViewController: self)
+        bottomSheetViewController.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+    }
+    
+    func initFab() {
+        view.addSubview(fab)
+        fab.translatesAutoresizingMaskIntoConstraints = false
+        fab.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
+        fab.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -28.0).isActive = true
+        fab.setImage(UIImage(named: "Directions"), for: .normal)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -96,15 +118,6 @@ class ViewController: UIViewController {
     
     func closeViewController() {
         dismiss(animated: true)
-    }
-    
-    func addBottomSheet() {
-        let bottomSheetViewController = BottomSheetViewController()
-        
-        self.addChildViewController(bottomSheetViewController)
-        self.view.addSubview(bottomSheetViewController.view)
-        bottomSheetViewController.didMove(toParentViewController: self)
-        bottomSheetViewController.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
     }
 
 }
