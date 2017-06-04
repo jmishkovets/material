@@ -12,7 +12,7 @@ class BottomSheetViewController: UIViewController {
 
     @IBOutlet weak var gripView: UIView!
     
-    let alpha: CGFloat = 0.7
+    let alpha: CGFloat = 0.6
     let minHeight: CGFloat = 56
     
     override func viewDidLoad() {
@@ -22,8 +22,6 @@ class BottomSheetViewController: UIViewController {
         view.addGestureRecognizer(panGesture)
         
         gripView.alpha = alpha
-        
-        //gripView.backgroundColor = AppDelegate.appleBlue
         
         roundViewCorners()
     }
@@ -48,7 +46,7 @@ class BottomSheetViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupBackgorund() // todo: causes multiple view creation if settings are choosen
+        setupBackgorund()
     }
     
     func setupBackgorund() {
@@ -68,11 +66,10 @@ class BottomSheetViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            let frame = self?.view.frame
-            let indent = UIScreen.main.bounds.height - (self?.minHeight)!
-            self?.view.frame = CGRect(x: 0, y: indent, width: frame!.width, height: frame!.height)
-        }
+        let frame = view.frame
+        let indent = UIScreen.main.bounds.height - minHeight
+        self.view.frame = CGRect(x: 0, y: indent, width: frame.width, height: frame.height)
+        self.view.isHidden = false
     }
 
     /*

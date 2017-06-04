@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         
         initAppBar()
         initMap()
+        addBottomSheet()
     }
     
     func initAppBar() {
@@ -71,7 +72,6 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        addBottomSheet()
     }
     
     func centerMapOnLocation(location: CLLocation) {
