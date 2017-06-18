@@ -12,8 +12,8 @@ class BottomSheetViewController: UIViewController {
 
     @IBOutlet weak var gripView: UIView!
     
-    let alpha: CGFloat = 0.6
-    let minHeight: CGFloat = 56
+    private let _alpha: CGFloat = 0.6
+    private let _minHeight: CGFloat = 56
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +25,16 @@ class BottomSheetViewController: UIViewController {
         tapGesture.numberOfTapsRequired = 1
         view.addGestureRecognizer(tapGesture)
         
-        gripView.alpha = alpha
+        gripView.alpha = _alpha
         
         roundViewCorners()
     }
     
-    func didPanGesture(panGestureRecognizer: UIPanGestureRecognizer) {
+    @objc private func didPanGesture(panGestureRecognizer: UIPanGestureRecognizer) {
         let translation = panGestureRecognizer.translation(in: self.view)
         let minY = self.view.frame.minY
         var newY = minY + translation.y
-        let limitY = UIScreen.main.bounds.height - minHeight
+        let limitY = UIScreen.main.bounds.height - _minHeight
         if newY > limitY {
             newY = limitY
         }
@@ -42,14 +42,14 @@ class BottomSheetViewController: UIViewController {
         panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
     }
     
-    func didTapGesture(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc private func didTapGesture(tapGestureRecognizer: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.2) { [weak self] in
             let frame = self?.view.frame
             self?.view.frame = CGRect(x: 0, y: UIApplication.shared.statusBarFrame.size.height, width: frame!.width, height: frame!.height)
         }
     }
     
-    func roundViewCorners() {
+    private func roundViewCorners() {
         view.layer.cornerRadius = 5
         gripView.layer.cornerRadius = 3
         view.clipsToBounds = true
@@ -60,12 +60,12 @@ class BottomSheetViewController: UIViewController {
         setupBackgorund()
     }
     
-    func setupBackgorund() {
+    private func setupBackgorund() {
         let blurEffect = UIBlurEffect.init(style: .dark)
         let visualEffect = UIVisualEffectView.init(effect: blurEffect)
         let bluredView = UIVisualEffectView.init(effect: blurEffect)
-        visualEffect.alpha = alpha
-        bluredView.alpha = alpha
+        visualEffect.alpha = _alpha
+        bluredView.alpha = _alpha
         bluredView.contentView.addSubview(visualEffect)
         
         visualEffect.frame = UIScreen.main.bounds
@@ -78,19 +78,9 @@ class BottomSheetViewController: UIViewController {
         super.viewDidAppear(animated)
         
         let frame = view.frame
-        let indent = UIScreen.main.bounds.height - minHeight
+        let indent = UIScreen.main.bounds.height - _minHeight
         self.view.frame = CGRect(x: 0, y: indent, width: frame.width, height: frame.height)
         self.view.isHidden = false
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

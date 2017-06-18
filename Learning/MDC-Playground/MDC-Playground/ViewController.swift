@@ -16,55 +16,37 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    let appBar = MDCAppBar()
-    
-    let fab = MDCFloatingButton()
+    private let _appBar = MDCAppBar()
+    private let _navigationButton = MDCFloatingButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initAppBar()
-        initMap()
-        addBottomSheet()
-        initFab()
+        setupAppBar()
+        setupMap()
+        setupBottomSheet()
+        setupNavigationButton()
     }
     
-    func initAppBar() {
-        addChildViewController(appBar.headerViewController)
+    private func setupAppBar() {
+        addChildViewController(_appBar.headerViewController)
         
-        appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
-        //appBar.headerViewController.headerView.trackingScrollView = self.view
-        appBar.navigationBar.tintColor = UIColor.white
-        appBar.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        appBar.addSubviewsToParent()
+        _appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
+        _appBar.navigationBar.tintColor = UIColor.white
+        _appBar.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        _appBar.addSubviewsToParent()
         
         title = "MD forever!"
-        
-//        let buttonFrame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//    
-//        let searchButton: UIButton = UIButton(type: UIButtonType.custom)
-//        searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
-//        searchButton.addTarget(self, action: #selector(didTapSearch), for: UIControlEvents.touchUpInside)
-//        searchButton.frame = buttonFrame
-//        let searchBarButton = UIBarButtonItem(customView: searchButton)
-//        
-//        let settingsButton: UIButton = UIButton(type: UIButtonType.custom)
-//        settingsButton.setImage(UIImage(named: "Settings"), for: UIControlState.normal)
-//        settingsButton.addTarget(self, action: #selector(didTapSettings), for: UIControlEvents.touchUpInside)
-//        settingsButton.frame = buttonFrame
-//        let settingsBarButton = UIBarButtonItem(customView: settingsButton)
-//        
-//        self.navigationItem.rightBarButtonItems = [settingsBarButton, searchBarButton]
-        
+
         let settingsBarButton = UIBarButtonItem(image: UIImage(named: "Settings"), style: .done, target: self, action: #selector(didTapSettings))
         self.navigationItem.rightBarButtonItem = settingsBarButton
         
         // After all other views have been registered.
-        appBar.addSubviewsToParent()
+        _appBar.addSubviewsToParent()
     }
     
-    func initMap() {
-        // Honolulu
+    private func setupMap() {
+        // Location of Honolulu
         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
         centerMapOnLocation(location: initialLocation)
         
@@ -75,7 +57,7 @@ class ViewController: UIViewController {
         mapView.addAnnotation(dropPin)
     }
     
-    func addBottomSheet() {
+    private func setupBottomSheet() {
         let bottomSheetViewController = BottomSheetViewController()
         
         self.addChildViewController(bottomSheetViewController)
@@ -84,26 +66,26 @@ class ViewController: UIViewController {
         bottomSheetViewController.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
     }
     
-    func initFab() {
-        view.addSubview(fab)
-        fab.translatesAutoresizingMaskIntoConstraints = false
-        fab.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
-        fab.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -28.0).isActive = true
-        fab.setImage(UIImage(named: "Directions"), for: .normal)
+    private func setupNavigationButton() {
+        view.addSubview(_navigationButton)
+        _navigationButton.translatesAutoresizingMaskIntoConstraints = false
+        _navigationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
+        _navigationButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -28.0).isActive = true
+        _navigationButton.setImage(UIImage(named: "Directions"), for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    func centerMapOnLocation(location: CLLocation) {
+    private func centerMapOnLocation(location: CLLocation) {
         let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    func didTapSettings() {
+    @objc private func didTapSettings() {
         let settingsViewController = SettingsViewController()
         settingsViewController.title = "Settings"
         
@@ -116,7 +98,7 @@ class ViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
     
-    func closeViewController() {
+    private func closeViewController() {
         dismiss(animated: true)
     }
 
