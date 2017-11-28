@@ -13,9 +13,9 @@ import MaterialComponents.MaterialSnackbar
 
 class SettingsViewController: MDCCollectionViewController {
     
-    private let _reusableCellIdentifier = "itemCellIdentifier"
-    private let _appBar = MDCAppBar()
-    private var _content = [Int: [String]]()
+    private let reusableCellIdentifier = "itemCellIdentifier"
+    private let appBar = MDCAppBar()
+    private var content = [Int: [String]]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +25,13 @@ class SettingsViewController: MDCCollectionViewController {
     }
     
     private func setupAppBar() {
-        addChildViewController(_appBar.headerViewController)
-        _appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
-        _appBar.navigationBar.tintColor = UIColor.white
-        _appBar.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        addChildViewController(appBar.headerViewController)
+        appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
+        appBar.navigationBar.tintColor = UIColor.white
+        appBar.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         
-        _appBar.headerViewController.headerView.trackingScrollView = self.collectionView
-        _appBar.addSubviewsToParent()
+        appBar.headerViewController.headerView.trackingScrollView = self.collectionView
+        appBar.addSubviewsToParent()
         
         let backButton = UIBarButtonItem(image: UIImage(named: "Back"), style: .done, target: self, action: #selector(didTapBack))
         
@@ -45,7 +45,7 @@ class SettingsViewController: MDCCollectionViewController {
     
     private func setupCollectionView() {
         self.collectionView?.register(MDCCollectionViewTextCell.self,
-                                      forCellWithReuseIdentifier: _reusableCellIdentifier)
+                                      forCellWithReuseIdentifier: reusableCellIdentifier)
         
         self.collectionView?.register(MDCCollectionViewTextCell.self,
                                       forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
@@ -54,11 +54,11 @@ class SettingsViewController: MDCCollectionViewController {
         // Customize collection view settings.
         self.styler.cellStyle = .card
         
-        _content[0] = ["Public Profile", "Subscribe to Daily Digest"]
-        _content[1] = ["Get Email Notifications", "Get Text Notifications"]
+        content[0] = ["Public Profile", "Subscribe to Daily Digest"]
+        content[1] = ["Get Email Notifications", "Get Text Notifications"]
     }
     
-    @objc fileprivate func didTapSwitch() {
+    @objc private func didTapSwitch() {
         let message = MDCSnackbarMessage(text: "Are you sure?")
         let action = MDCSnackbarMessageAction()
         action.title = "Yes";
@@ -75,18 +75,18 @@ class SettingsViewController: MDCCollectionViewController {
 extension SettingsViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return _content.count
+        return content.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _content[section]!.count
+        return content[section]!.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: _reusableCellIdentifier,
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableCellIdentifier,
                                                       for: indexPath)
         if let cell = cell as? MDCCollectionViewTextCell {
-            cell.textLabel?.text = _content[indexPath.section]?[indexPath.item]
+            cell.textLabel?.text = content[indexPath.section]?[indexPath.item]
             let editingSwitch = UISwitch(frame: CGRect.zero)
             editingSwitch.addTarget(self, action: #selector(self.didTapSwitch), for: .valueChanged)
             cell.accessoryView = editingSwitch;
@@ -118,14 +118,14 @@ extension SettingsViewController {
 extension SettingsViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == _appBar.headerViewController.headerView.trackingScrollView {
-            _appBar.headerViewController.headerView.trackingScrollDidScroll()
+        if scrollView == appBar.headerViewController.headerView.trackingScrollView {
+            appBar.headerViewController.headerView.trackingScrollDidScroll()
         }
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView == _appBar.headerViewController.headerView.trackingScrollView {
-            _appBar.headerViewController.headerView.trackingScrollDidEndDecelerating()
+        if scrollView == appBar.headerViewController.headerView.trackingScrollView {
+            appBar.headerViewController.headerView.trackingScrollDidEndDecelerating()
         }
     }
     

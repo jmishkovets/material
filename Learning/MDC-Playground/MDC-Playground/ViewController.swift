@@ -14,10 +14,10 @@ import MaterialComponents.MaterialButtons
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet private weak var mapView: MKMapView!
     
-    private let _appBar = MDCAppBar()
-    private let _navigationButton = MDCFloatingButton()
+    private let appBar = MDCAppBar()
+    private let navigationButton = MDCFloatingButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,12 @@ class ViewController: UIViewController {
     }
     
     private func setupAppBar() {
-        addChildViewController(_appBar.headerViewController)
+        addChildViewController(appBar.headerViewController)
         
-        _appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
-        _appBar.navigationBar.tintColor = UIColor.white
-        _appBar.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
-        _appBar.addSubviewsToParent()
+        appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
+        appBar.navigationBar.tintColor = UIColor.white
+        appBar.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        appBar.addSubviewsToParent()
         
         title = "MD forever!"
 
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = settingsBarButton
         
         // After all other views have been registered.
-        _appBar.addSubviewsToParent()
+        appBar.addSubviewsToParent()
     }
     
     private func setupMap() {
@@ -67,11 +67,11 @@ class ViewController: UIViewController {
     }
     
     private func setupNavigationButton() {
-        view.addSubview(_navigationButton)
-        _navigationButton.translatesAutoresizingMaskIntoConstraints = false
-        _navigationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
-        _navigationButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -28.0).isActive = true
-        _navigationButton.setImage(UIImage(named: "Directions"), for: .normal)
+        view.addSubview(navigationButton)
+        navigationButton.translatesAutoresizingMaskIntoConstraints = false
+        navigationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
+        navigationButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -28.0).isActive = true
+        navigationButton.setImage(UIImage(named: "Directions"), for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
