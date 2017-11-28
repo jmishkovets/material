@@ -28,6 +28,8 @@ class BottomSheetViewController: UIViewController {
         gripView.alpha = alpha
         
         roundViewCorners()
+        
+        setupBackgorund()
     }
     
     @objc private func didPanGesture(panGestureRecognizer: UIPanGestureRecognizer) {
@@ -55,11 +57,6 @@ class BottomSheetViewController: UIViewController {
         view.clipsToBounds = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupBackgorund()
-    }
-    
     private func setupBackgorund() {
         let blurEffect = UIBlurEffect.init(style: .dark)
         let visualEffect = UIVisualEffectView.init(effect: blurEffect)
@@ -72,6 +69,10 @@ class BottomSheetViewController: UIViewController {
         bluredView.frame = UIScreen.main.bounds
         
         view.insertSubview(bluredView, at: 0)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {

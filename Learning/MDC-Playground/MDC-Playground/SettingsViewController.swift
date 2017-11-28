@@ -27,7 +27,6 @@ class SettingsViewController: MDCCollectionViewController {
     private func setupAppBar() {
         addChildViewController(appBar.headerViewController)
         appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
-        appBar.navigationBar.tintColor = UIColor.white
         appBar.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         
         appBar.headerViewController.headerView.trackingScrollView = self.collectionView
@@ -134,8 +133,10 @@ extension SettingsViewController {
 // MARK: UICollectionViewDelegateFlowLayout
 
 extension SettingsViewController {
+    
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width, height: MDCCellDefaultOneLineHeight)
     }
+    
 }
 

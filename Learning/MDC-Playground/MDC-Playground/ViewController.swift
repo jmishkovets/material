@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         addChildViewController(appBar.headerViewController)
         
         appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
-        appBar.navigationBar.tintColor = UIColor.white
         appBar.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         appBar.addSubviewsToParent()
         
@@ -90,7 +89,6 @@ class ViewController: UIViewController {
         settingsViewController.title = "Settings"
         
         let navigationController = UINavigationController(rootViewController: settingsViewController)
-        navigationController.navigationBar.barTintColor = AppDelegate.appleBlue
         navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController.navigationBar.isTranslucent = false
         navigationController.isNavigationBarHidden = true
