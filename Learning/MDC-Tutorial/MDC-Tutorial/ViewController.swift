@@ -14,7 +14,7 @@ import MaterialComponents.MaterialCollections
 
 class ViewController: MDCCollectionViewController {
     
-    fileprivate let appBar = MDCAppBar()
+    private let appBar = MDCAppBar()
     private let floatingButton = MDCFloatingButton()
 
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class ViewController: MDCCollectionViewController {
                                                             action: #selector(ViewController.barButtonDidTap(_:)))
     }
     
-    func barButtonDidTap(_ sender: UIBarButtonItem) {
+    @objc func barButtonDidTap(_ sender: UIBarButtonItem) {
         editor.isEditing = !editor.isEditing
         
         let buttonTitle =  editor.isEditing ? "Cancel" : "Edit"
@@ -63,7 +63,7 @@ class ViewController: MDCCollectionViewController {
         floatingButton.addTarget(self, action: #selector(ViewController.floatingButtonDidTap(_:)), for: .touchUpInside)
     }
     
-    func floatingButtonDidTap(_ sender: UIButton) {
+    @objc func floatingButtonDidTap(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
     }
     
