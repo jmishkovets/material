@@ -39,9 +39,6 @@ class ViewController: UIViewController {
 
         let settingsBarButton = UIBarButtonItem(image: UIImage(named: "Settings"), style: .done, target: self, action: #selector(didTapSettings))
         self.navigationItem.rightBarButtonItem = settingsBarButton
-        
-        // After all other views have been registered.
-        appBar.addSubviewsToParent()
     }
     
     private func setupMap() {
@@ -87,13 +84,7 @@ class ViewController: UIViewController {
     @objc private func didTapSettings() {
         let settingsViewController = SettingsViewController()
         settingsViewController.title = "Settings"
-        
-        let navigationController = UINavigationController(rootViewController: settingsViewController)
-        navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.isNavigationBarHidden = true
-        
-        present(navigationController, animated: true, completion: nil)
+        present(settingsViewController, animated: true, completion: nil)
     }
     
     private func closeViewController() {
