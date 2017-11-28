@@ -14,8 +14,8 @@ import MaterialComponents.MaterialCollections
 
 class ViewController: MDCCollectionViewController {
     
-    fileprivate let _appBar = MDCAppBar()
-    private let _floatingButton = MDCFloatingButton()
+    fileprivate let appBar = MDCAppBar()
+    private let floatingButton = MDCFloatingButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +26,11 @@ class ViewController: MDCCollectionViewController {
     }
     
     func initAppBar() {
-        addChildViewController(_appBar.headerViewController)
-        _appBar.headerViewController.headerView.backgroundColor = UIColor(red: 1.0, green: 0.76, blue: 0.03, alpha: 1.0)
-        _appBar.headerViewController.headerView.trackingScrollView = self.collectionView
-        _appBar.navigationBar.tintColor = UIColor.black
-        _appBar.addSubviewsToParent()
+        addChildViewController(appBar.headerViewController)
+        appBar.headerViewController.headerView.backgroundColor = UIColor(red: 1.0, green: 0.76, blue: 0.03, alpha: 1.0)
+        appBar.headerViewController.headerView.trackingScrollView = self.collectionView
+        appBar.navigationBar.tintColor = UIColor.black
+        appBar.addSubviewsToParent()
         
         title = "Material Components"
         
@@ -48,16 +48,19 @@ class ViewController: MDCCollectionViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(ViewController.barButtonDidTap(_:)))
-        _floatingButton.setTitle("+", for: .normal)
-        _floatingButton.setTitle("-", for: .selected)
-        _floatingButton.addTarget(self, action: #selector(ViewController.floatingButtonDidTap(_:)), for: .touchUpInside)
     }
     
     func initfloatingButton() {
-        view.addSubview(_floatingButton)
-        _floatingButton.translatesAutoresizingMaskIntoConstraints = false
-        _floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
-        _floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16.0).isActive = true
+        view.addSubview(floatingButton)
+        floatingButton.translatesAutoresizingMaskIntoConstraints = false
+        floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
+        floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16.0).isActive = true
+        
+        floatingButton.setTitle("+", for: .normal)
+        floatingButton.setTitle("-", for: .selected)
+        floatingButton.setTitleColor(.white, for: .normal)
+        floatingButton.setTitleColor(.white, for: .selected)
+        floatingButton.addTarget(self, action: #selector(ViewController.floatingButtonDidTap(_:)), for: .touchUpInside)
     }
     
     func floatingButtonDidTap(_ sender: UIButton) {
@@ -97,14 +100,14 @@ extension ViewController {
 extension ViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == _appBar.headerViewController.headerView.trackingScrollView {
-            _appBar.headerViewController.headerView.trackingScrollDidScroll()
+        if scrollView == appBar.headerViewController.headerView.trackingScrollView {
+            appBar.headerViewController.headerView.trackingScrollDidScroll()
         }
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView == _appBar.headerViewController.headerView.trackingScrollView {
-            _appBar.headerViewController.headerView.trackingScrollDidEndDecelerating()
+        if scrollView == appBar.headerViewController.headerView.trackingScrollView {
+            appBar.headerViewController.headerView.trackingScrollDidEndDecelerating()
         }
     }
 
