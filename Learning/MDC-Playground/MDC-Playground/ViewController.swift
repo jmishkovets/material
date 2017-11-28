@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         
         _appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
         _appBar.navigationBar.tintColor = UIColor.white
-        _appBar.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        _appBar.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         _appBar.addSubviewsToParent()
         
         title = "MD forever!"
@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         
         let navigationController = UINavigationController(rootViewController: settingsViewController)
         navigationController.navigationBar.barTintColor = AppDelegate.appleBlue
-        navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController.navigationBar.isTranslucent = false
         navigationController.isNavigationBarHidden = true
         

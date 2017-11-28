@@ -13,9 +13,9 @@ import MaterialComponents.MaterialSnackbar
 
 class SettingsViewController: MDCCollectionViewController {
     
-    fileprivate let _reusableCellIdentifier = "itemCellIdentifier"
-    fileprivate let _appBar = MDCAppBar()
-    fileprivate var _content = [Int: [String]]()
+    private let _reusableCellIdentifier = "itemCellIdentifier"
+    private let _appBar = MDCAppBar()
+    private var _content = [Int: [String]]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class SettingsViewController: MDCCollectionViewController {
         addChildViewController(_appBar.headerViewController)
         _appBar.headerViewController.headerView.backgroundColor = AppDelegate.appleBlue
         _appBar.navigationBar.tintColor = UIColor.white
-        _appBar.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        _appBar.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         
         _appBar.headerViewController.headerView.trackingScrollView = self.collectionView
         _appBar.addSubviewsToParent()
